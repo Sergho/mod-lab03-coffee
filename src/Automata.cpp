@@ -4,13 +4,15 @@
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include <string>
 
 using json = nlohmann::json;
+using namespace std;
 
 Automata::Automata(string filename) {
-  std::ifstream config("products.json");
+  ifstream config("products.json");
   if (!config.is_open()) {
-    throw std::invalid_argument("Файл конфигурации меню не найден");
+    throw invalid_argument("Файл конфигурации меню не найден");
   }
 
   json menu = json::parse(config);
@@ -45,3 +47,10 @@ string Automata::getMenu() {
   return result;
 }
 State Automata::getState() { return this->state; }
+string Automata::getStateDesc() {
+  const string descriptions[] = {
+      "Автомат сейчас выключен", "Автомат ожидает действий",
+      "Автомат принимает деньги", "Автомат проверяет деньги",
+      "Автомат готовит напиток"};
+  return descriptions[this->state];
+}

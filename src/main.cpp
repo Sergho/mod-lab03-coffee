@@ -7,8 +7,8 @@
 using namespace std;
 int main() {
   Automata automata("products.json");
-  cout << automata.getState() << endl;
+  cout << automata.getStateDesc() << endl;
   automata.on();
-  cout << automata.getState() << endl;
+  cout << automata.getStateDesc() << endl;
   cout << automata.getMenu();
 }

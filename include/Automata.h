@@ -21,6 +21,7 @@ class Automata {
   int coin(int amount);
   string getMenu();
   State getState();
+  string getStateDesc();
   bool choice(int index);
   int check();
   bool cancel();
