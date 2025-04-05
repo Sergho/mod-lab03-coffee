@@ -63,6 +63,10 @@ int main() {
   automata.coin(50);
   logInfo(automata);
 
+  cout << "Выбираем Эспрессо..." << endl;
+  automata.choice(1);
+  logInfo(automata);
+
   cout << "Начинаем готовить..." << endl;
   automata.cook();
   logInfo(automata);

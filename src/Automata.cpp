@@ -86,7 +86,10 @@ bool Automata::cancel() {
   return false;
 }
 bool Automata::cook() {
+  if (this->state != State::CHECK) return true;
   if (this->check() != 0) return true;
+  if (this->selectedIndex == -1) return true;
+
   this->state = State::COOK;
   this->cash -= this->prices[this->selectedIndex];
   return false;
