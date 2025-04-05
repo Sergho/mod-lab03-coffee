@@ -13,9 +13,5 @@ jobs:
         run: mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
       - name: make
         run: cd build && make
-      - name: Check file structure
-        run: cd build/test && ls
-      - name: Read config
-        run: cd build/test && cat products.json
       - name: Run Test
-        run: /home/runner/work/mod-lab03-coffee/mod-lab03-coffee/build/test/mod-lab03-coffee.test
+        run: cd ./build/test && ./mod-lab03-coffee.test
