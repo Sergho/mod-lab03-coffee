@@ -9,7 +9,7 @@ using namespace std;
 
 class Automata {
  private:
-  int cash;
+  int cash = 0;
   vector<string> menu;
   vector<int> prices;
   State state = State::OFF;

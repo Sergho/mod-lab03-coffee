@@ -62,3 +62,11 @@ bool Automata::choice(int index) {
   this->state = State::CHECK;
   return false;
 }
+int Automata::check() {
+  if (this->state != State::CHECK) {
+    return this->prices[this->selectedIndex];
+  }
+  int cashLeft = this->prices[this->selectedIndex] - this->cash;
+  if (cashLeft < 0) cashLeft = 0;
+  return cashLeft;
+}

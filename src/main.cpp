@@ -17,4 +17,5 @@ int main() {
   cout << automata.getStateDesc() << endl;
   automata.choice(9);
   cout << automata.getStateDesc() << endl;
+  cout << automata.check() << endl;
 }
