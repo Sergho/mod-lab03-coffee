@@ -70,3 +70,9 @@ int Automata::check() {
   if (cashLeft < 0) cashLeft = 0;
   return cashLeft;
 }
+bool Automata::cook() {
+  if (this->check() != 0) return true;
+  this->state = State::COOK;
+  this->cash -= this->prices[this->selectedIndex];
+  return false;
+}
