@@ -42,7 +42,8 @@ int Automata::coin(int amount) {
 string Automata::getMenu() {
   string result = "--- МЕНЮ ---\n";
   for (int i = 0; i < this->menu.size(); i++) {
-    result += this->menu[i] + ": " + to_string(this->prices[i]) + "\n";
+    result += to_string(i + 1) + ". " + this->menu[i] + ": " +
+              to_string(this->prices[i]) + "\n";
   }
   return result;
 }
@@ -53,4 +54,10 @@ string Automata::getStateDesc() {
       "Автомат принимает деньги", "Автомат проверяет деньги",
       "Автомат готовит напиток"};
   return descriptions[this->state];
+}
+bool Automata::choice(int index) {
+  if (this->state != State::ACCEPT) return true;
+  this->selectedIndex = index - 1;
+  this->state = State::CHECK;
+  return false;
 }

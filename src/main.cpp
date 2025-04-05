@@ -11,4 +11,10 @@ int main() {
   automata.on();
   cout << automata.getStateDesc() << endl;
   cout << automata.getMenu();
+  automata.coin(70);
+  cout << automata.getStateDesc() << endl;
+  automata.coin(30);
+  cout << automata.getStateDesc() << endl;
+  automata.choice(9);
+  cout << automata.getStateDesc() << endl;
 }
