@@ -1,3 +1,9 @@
+configure_file(
+    ${CMAKE_SOURCE_DIR}/test/products.json
+    ${CMAKE_BINARY_DIR}/test/products.json
+    COPYONLY
+)
+
 add_executable(${PROJECT_NAME}.test
   AllTests.cpp
   tests.cpp)

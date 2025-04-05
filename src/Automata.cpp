@@ -10,7 +10,7 @@ using json = nlohmann::json;
 using namespace std;
 
 Automata::Automata(string filename) {
-  ifstream config("products.json");
+  ifstream config(filename);
   if (!config.is_open()) {
     throw invalid_argument("Файл конфигурации меню не найден");
   }
