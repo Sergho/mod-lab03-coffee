@@ -88,3 +88,43 @@ TEST(state, finish) {
   automata.finish();
   EXPECT_EQ(1, automata.getState());
 }
+
+TEST(off, many) {
+  Automata automata("products.json");
+  automata.off();
+  automata.off();
+  automata.off();
+  EXPECT_EQ(0, automata.getState());
+}
+
+TEST(off, rolling) {
+  Automata automata("products.json");
+  automata.off();
+  automata.off();
+  automata.on();
+  automata.off();
+  automata.off();
+  automata.on();
+  automata.off();
+  EXPECT_EQ(0, automata.getState());
+}
+
+TEST(wait, many) {
+  Automata automata("products.json");
+  automata.on();
+  automata.on();
+  automata.on();
+  EXPECT_EQ(1, automata.getState());
+}
+
+TEST(wait, rolling) {
+  Automata automata("products.json");
+  automata.on();
+  automata.on();
+  automata.off();
+  automata.on();
+  automata.on();
+  automata.off();
+  automata.on();
+  EXPECT_EQ(1, automata.getState());
+}
