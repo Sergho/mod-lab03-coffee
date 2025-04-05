@@ -36,6 +36,7 @@ bool Automata::off() {
 int Automata::coin(int amount) {
   if (this->state == State::WAIT || this->state == State::ACCEPT) {
     this->cash += amount;
+    this->state = State::ACCEPT;
   }
   return this->cash;
 }
