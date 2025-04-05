@@ -1,12 +1,13 @@
 // Copyright 2025 Sergho
 
+#include "Automata.h"
+
 #include <exception>
 #include <fstream>
 #include <iostream>
-#include <nlohmann/json.hpp>
 #include <string>
 
-#include "Automata.h"
+#include "nlohmann/json.hpp"
 
 using json = nlohmann::json;
 using std::ifstream;

@@ -18,7 +18,7 @@ class Automata {
   int selectedIndex = -1;
 
  public:
-  Automata(string filename);
+  explicit Automata(string filename);
   bool on();
   bool off();
   int coin(int amount);
