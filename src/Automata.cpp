@@ -57,6 +57,7 @@ string Automata::getStateDesc() {
   return descriptions[this->state];
 }
 string Automata::getSelected() {
+  if (this->selectedIndex == -1) return "";
   return this->menu[this->selectedIndex] + " - " +
          to_string(this->prices[this->selectedIndex]);
 }
@@ -80,6 +81,8 @@ bool Automata::cancel() {
     return true;
   }
   this->state = State::WAIT;
+  this->cash = 0;
+  this->selectedIndex = -1;
   return false;
 }
 bool Automata::cook() {
@@ -93,5 +96,7 @@ bool Automata::finish() {
     return true;
   }
   this->state = State::WAIT;
+  this->cash = 0;
+  this->selectedIndex = -1;
   return false;
 }

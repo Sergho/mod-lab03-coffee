@@ -13,7 +13,7 @@ class Automata {
   vector<string> menu;
   vector<int> prices;
   State state = State::OFF;
-  int selectedIndex;
+  int selectedIndex = -1;
 
  public:
   Automata(string filename);
