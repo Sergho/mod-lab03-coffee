@@ -1,5 +1,5 @@
 set(header_path "${${PROJECT_NAME}_SOURCE_DIR}/include")
-set(header ${header_path}/Automata.h)
+set(header ${header_path}/Automata.h ${header_path}/States.h)
 set(src Automata.cpp)
 
 
