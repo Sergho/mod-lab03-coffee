@@ -70,9 +70,23 @@ int Automata::check() {
   if (cashLeft < 0) cashLeft = 0;
   return cashLeft;
 }
+bool Automata::cancel() {
+  if (this->state != State::ACCEPT && this->state != State::CHECK) {
+    return true;
+  }
+  this->state = State::WAIT;
+  return false;
+}
 bool Automata::cook() {
   if (this->check() != 0) return true;
   this->state = State::COOK;
   this->cash -= this->prices[this->selectedIndex];
+  return false;
+}
+bool Automata::finish() {
+  if (this->state != State::COOK) {
+    return true;
+  }
+  this->state = State::WAIT;
   return false;
 }

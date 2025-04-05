@@ -18,6 +18,14 @@ int main() {
   automata.choice(9);
   cout << automata.getStateDesc() << endl;
   cout << automata.check() << endl;
+  automata.cancel();
+  cout << automata.getStateDesc() << endl;
+  automata.coin(60);
+  cout << automata.getStateDesc() << endl;
+  automata.choice(1);
+  cout << automata.getStateDesc() << endl;
   automata.cook();
+  cout << automata.getStateDesc() << endl;
+  automata.finish();
   cout << automata.getStateDesc() << endl;
 }
