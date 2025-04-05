@@ -53,7 +53,7 @@ TEST(state, acceptCancel) {
   EXPECT_EQ(1, automata.getState());
 }
 
-TEST(state, check) {
+TEST(state, choice) {
   Automata automata("products.json");
   automata.on();
   automata.coin(100);
@@ -89,7 +89,7 @@ TEST(state, finish) {
   EXPECT_EQ(1, automata.getState());
 }
 
-TEST(off, many) {
+TEST(state, manyOff) {
   Automata automata("products.json");
   automata.off();
   automata.off();
@@ -97,7 +97,7 @@ TEST(off, many) {
   EXPECT_EQ(0, automata.getState());
 }
 
-TEST(off, rolling) {
+TEST(state, rollingOnOff) {
   Automata automata("products.json");
   automata.off();
   automata.off();
@@ -109,7 +109,7 @@ TEST(off, rolling) {
   EXPECT_EQ(0, automata.getState());
 }
 
-TEST(wait, many) {
+TEST(state, manyOn) {
   Automata automata("products.json");
   automata.on();
   automata.on();
@@ -117,7 +117,7 @@ TEST(wait, many) {
   EXPECT_EQ(1, automata.getState());
 }
 
-TEST(wait, rolling) {
+TEST(state, rollingOffOn) {
   Automata automata("products.json");
   automata.on();
   automata.on();
@@ -127,4 +127,42 @@ TEST(wait, rolling) {
   automata.off();
   automata.on();
   EXPECT_EQ(1, automata.getState());
+}
+
+TEST(state, doubleCancel) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(100);
+  automata.cancel();
+  automata.cancel();
+  EXPECT_EQ(1, automata.getState());
+}
+
+TEST(state, check) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(1000);
+  automata.choice(1);
+  automata.check();
+  EXPECT_EQ(3, automata.getState());
+}
+
+TEST(state, doubleCheck) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(1000);
+  automata.choice(1);
+  automata.check();
+  automata.check();
+  EXPECT_EQ(3, automata.getState());
+}
+
+TEST(state, cookCancel) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(1000);
+  automata.choice(1);
+  automata.cook();
+  automata.cancel();
+  EXPECT_EQ(4, automata.getState());
 }
