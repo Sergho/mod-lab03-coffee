@@ -166,3 +166,86 @@ TEST(state, cookCancel) {
   automata.cancel();
   EXPECT_EQ(4, automata.getState());
 }
+
+TEST(cash, set) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  EXPECT_EQ(15, automata.getCash());
+}
+
+TEST(cash, sum) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.coin(25);
+  EXPECT_EQ(40, automata.getCash());
+}
+
+TEST(cash, saveChoice) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.choice(1);
+  EXPECT_EQ(15, automata.getCash());
+}
+
+TEST(cash, saveCheck) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.choice(1);
+  automata.check();
+  EXPECT_EQ(15, automata.getCash());
+}
+
+TEST(cash, clearAccept) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.cancel();
+  EXPECT_EQ(0, automata.getCash());
+}
+
+TEST(cash, clearCheck) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.choice(1);
+  automata.cancel();
+  EXPECT_EQ(0, automata.getCash());
+}
+
+TEST(cash, clearFinish) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(1000);
+  automata.choice(1);
+  automata.cook();
+  automata.finish();
+  EXPECT_EQ(0, automata.getCash());
+}
+
+TEST(cash, checkNotEnough) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(15);
+  automata.choice(1);
+  EXPECT_EQ(35, automata.check());
+}
+
+TEST(cash, checkEnough) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(50);
+  automata.choice(1);
+  EXPECT_EQ(0, automata.check());
+}
+
+TEST(cash, checkMore) {
+  Automata automata("products.json");
+  automata.on();
+  automata.coin(100);
+  automata.choice(1);
+  EXPECT_EQ(0, automata.check());
+}
