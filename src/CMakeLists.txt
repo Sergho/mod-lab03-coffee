@@ -4,7 +4,7 @@ set(src Automata.cpp)
 
 configure_file(
     ${CMAKE_SOURCE_DIR}/src/products.json
-    ${CMAKE_BINARY_DIR}/products.json
+    ${CMAKE_BINARY_DIR}/src/products.json
     COPYONLY
 )
 
