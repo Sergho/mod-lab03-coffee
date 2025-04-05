@@ -21,10 +21,20 @@ Automata::Automata(string filename) {
     }
   }
 }
-void Automata::on() { this->state = State::WAIT; }
-void Automata::off() { this->state = State::OFF; }
+bool Automata::on() {
+  if (this->state != State::OFF) return true;
+  this->state = State::WAIT;
+  return false;
+}
+bool Automata::off() {
+  if (this->state != State::WAIT) return true;
+  this->state = State::OFF;
+  return false;
+}
 int Automata::coin(int amount) {
-  this->cash += amount;
+  if (this->state == State::WAIT || this->state == State::ACCEPT) {
+    this->cash += amount;
+  }
   return this->cash;
 }
 string Automata::getMenu() {
@@ -34,3 +44,4 @@ string Automata::getMenu() {
   }
   return result;
 }
+State Automata::getState() { return this->state; }

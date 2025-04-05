@@ -12,18 +12,18 @@ class Automata {
   int cash;
   vector<string> menu;
   vector<int> prices;
-  State state;
+  State state = State::OFF;
 
  public:
   Automata(string filename);
-  void on();
-  void off();
+  bool on();
+  bool off();
   int coin(int amount);
   string getMenu();
   State getState();
-  void choice(int index);
+  bool choice(int index);
   int check();
-  void cancel();
-  void cook();
-  void finish();
+  bool cancel();
+  bool cook();
+  bool finish();
 };
