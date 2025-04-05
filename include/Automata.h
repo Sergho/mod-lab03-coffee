@@ -23,6 +23,8 @@ class Automata {
   string getMenu();
   State getState();
   string getStateDesc();
+  string getSelected();
+  int getCash();
   bool choice(int index);
   int check();
   bool cancel();

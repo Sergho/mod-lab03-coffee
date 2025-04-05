@@ -56,6 +56,11 @@ string Automata::getStateDesc() {
       "Автомат готовит напиток"};
   return descriptions[this->state];
 }
+string Automata::getSelected() {
+  return this->menu[this->selectedIndex] + " - " +
+         to_string(this->prices[this->selectedIndex]);
+}
+int Automata::getCash() { return this->cash; }
 bool Automata::choice(int index) {
   if (this->state != State::ACCEPT) return true;
   this->selectedIndex = index - 1;
