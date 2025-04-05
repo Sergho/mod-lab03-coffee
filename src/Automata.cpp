@@ -1,15 +1,18 @@
 // Copyright 2025 Sergho
 
-#include "Automata.h"
-
 #include <exception>
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <string>
 
+#include "Automata.h"
+
 using json = nlohmann::json;
-using namespace std;
+using std::ifstream;
+using std::invalid_argument;
+using std::string;
+using std::to_string;
 
 Automata::Automata(string filename) {
   ifstream config(filename);

@@ -1,12 +1,15 @@
 // Copyright 2025 Sergho
 
-#include <filesystem>
 #include <iostream>
+#include <string>
 
 #include "Automata.h"
 #include "States.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
+
 void logInfo(Automata automata) {
   cout << "Текущий баланс: " << automata.getCash() << endl;
   string selected = automata.getSelected();
